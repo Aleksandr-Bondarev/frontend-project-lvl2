@@ -24,7 +24,6 @@ const gendiff = (filepath1, filepath2) => {
   unitedKeys.sort();
 
   const duplicateFreeKeys = _.sortedUniq(unitedKeys);
-  //console.log(duplicateFreeKeys);
 
   let result = '{\n';
   for (const key of duplicateFreeKeys) {
@@ -44,6 +43,7 @@ const gendiff = (filepath1, filepath2) => {
   }
   result = result.concat('}');
   console.log(result);
+  return result;
 };
 
 export default gendiff;
