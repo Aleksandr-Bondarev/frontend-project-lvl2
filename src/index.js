@@ -28,21 +28,20 @@ const gendiff = (filepath1, filepath2) => {
   let result = '{\n';
   for (const key of duplicateFreeKeys) {
     if (obj1[key] === obj2[key] && obj1[key] !== undefined) {
-      result = result.concat(`\t  ${key}: ${obj1[key]}\n`);
+      result = result.concat(`    ${key}: ${obj1[key]}\n`);
     }
     if (key in obj1 && key in obj2 && obj1[key] !== obj2[key]) {
-      result = result.concat(`\t- ${key}: ${obj1[key]}\n`);
-      result = result.concat(`\t+ ${key}: ${obj2[key]}\n`);
+      result = result.concat(`  - ${key}: ${obj1[key]}\n`);
+      result = result.concat(`  + ${key}: ${obj2[key]}\n`);
     }
     if (key in obj1 && !(key in obj2)) {
-      result = result.concat(`\t- ${key}: ${obj1[key]}\n`);
+      result = result.concat(`  - ${key}: ${obj1[key]}\n`);
     }
     if (key in obj2 && !(key in obj1)) {
-      result = result.concat(`\t+ ${key}: ${obj2[key]}\n`);
+      result = result.concat(`  + ${key}: ${obj2[key]}\n`);
     }
   }
   result = result.concat('}');
-  console.log(result);
   return result;
 };
 
