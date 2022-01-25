@@ -28,3 +28,6 @@ jobs:
           make install
         env:
           CI: true
+      - name: Run Linter
+        run: |
+        make lint
