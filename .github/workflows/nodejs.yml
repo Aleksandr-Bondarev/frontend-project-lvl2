@@ -30,4 +30,4 @@ jobs:
           CI: true
       - name: Run Linter
         run: |
-        make lint
+          make lint
