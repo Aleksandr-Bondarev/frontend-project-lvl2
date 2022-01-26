@@ -38,8 +38,7 @@ const gendiff = (filepath1, filepath2) => {
     }
     if (key in obj1 && !(key in obj2)) {
       result = result.concat(`  - ${key}: ${obj1[key]}\n`);
-    }
-    else if (key in obj2) {
+    } else if (key in obj2) {
       result = result.concat(`  + ${key}: ${obj2[key]}\n`);
     }
   }
