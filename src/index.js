@@ -4,6 +4,8 @@ import path from 'path';
 
 import _ from 'lodash';
 
+import parse from './parsers.js';
+
 const gendiff = (filepath1, filepath2) => {
   const fullPath1 = path.resolve(process.cwd(), filepath1);
   const fullPath2 = path.resolve(process.cwd(), filepath2);
@@ -13,10 +15,10 @@ const gendiff = (filepath1, filepath2) => {
 
   const fileFormat1 = path.extname(fullPath1);
   const fileFormat2 = path.extname(fullPath2);
-
-  const obj1 = JSON.parse(data1, fileFormat1);
-  const obj2 = JSON.parse(data2, fileFormat2);
-
+  
+  const obj1 = parse(data1, fileFormat1);
+  const obj2 = parse(data2, fileFormat2);
+  
   const keys1 = Object.keys(obj1);
   const keys2 = Object.keys(obj2);
 
