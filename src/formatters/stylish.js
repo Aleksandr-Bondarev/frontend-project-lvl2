@@ -15,43 +15,21 @@ const stringify = (value, depth) => {
 const astDecoder = (ast) => {
   const decoder = (astData, depth) => {
     const lines = astData.map((unit) => {
-      if (unit.type === 'removed') {
-        return `${indentMaker(depth)}- ${unit.name}: ${stringify(
-          unit.value,
-          depth + 1,
-        )}`;
+      switch (unit.type) {
+        case 'removed':
+          return `${indentMaker(depth)}- ${unit.name}: ${stringify(unit.value, depth + 1)}`;
+        case 'added':
+          return `${indentMaker(depth)}+ ${unit.name}: ${stringify(unit.value, depth + 1)}`;
+        case 'nested':
+          return `${indentMaker(depth)}  ${unit.name}: ${decoder(unit.children, depth + 1)}`;
+        case 'equal':
+          return `${indentMaker(depth)}  ${unit.name}: ${stringify(unit.value, depth + 1)}`;
+        case 'updated':
+          return [`${indentMaker(depth)}- ${unit.name}: ${stringify(unit.oldValue, depth + 1)}`,
+            `${indentMaker(depth)}+ ${unit.name}: ${stringify(unit.newValue, depth + 1)}`,
+          ].join('\n');
+        default: return 'Something went wrong...';
       }
-      if (unit.type === 'added') {
-        return `${indentMaker(depth)}+ ${unit.name}: ${stringify(
-          unit.value,
-          depth + 1,
-        )}`;
-      }
-      if (unit.type === 'nested') {
-        return `${indentMaker(depth)}  ${unit.name}: ${decoder(
-          unit.children,
-          depth + 1,
-        )}`;
-      }
-      if (unit.type === 'equal') {
-        return `${indentMaker(depth)}  ${unit.name}: ${stringify(
-          unit.value,
-          depth + 1,
-        )}`;
-      }
-      if (unit.type === 'updated') {
-        return [
-          `${indentMaker(depth)}- ${unit.name}: ${stringify(
-            unit.oldValue,
-            depth + 1,
-          )}`,
-          `${indentMaker(depth)}+ ${unit.name}: ${stringify(
-            unit.newValue,
-            depth + 1,
-          )}`,
-        ].join('\n');
-      }
-      return 'Something went wrong...';
     });
     return ['{', ...lines, `${bracketIndent(depth)}}`].join('\n');
   };
