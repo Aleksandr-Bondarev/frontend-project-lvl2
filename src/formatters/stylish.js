@@ -12,7 +12,7 @@ const stringify = (value, depth) => {
   return value;
 };
 
-const astDecoder = (ast) => {
+const stylishAstDecoder = (ast) => {
   const decoder = (astData, depth) => {
     const lines = astData.map((unit) => {
       switch (unit.type) {
@@ -36,4 +36,4 @@ const astDecoder = (ast) => {
   return decoder(ast, 0);
 };
 
-export default astDecoder;
+export default stylishAstDecoder;
