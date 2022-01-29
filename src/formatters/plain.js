@@ -1,6 +1,4 @@
-const pathMaker = (value, path) => {
-  return `${path}.${value}`;
-};
+const pathMaker = (value, path) => `${path}.${value}`;
 
 const unitToString = (value) => {
   if (typeof value === 'object' && value !== null) {
@@ -24,19 +22,19 @@ const plainAstDecoder = (ast) => {
           case 'added':
             return `Property '${pathMaker(
               unit.name,
-              path
+              path,
             )}' was added with value ${unitToString(unit.value)}`;
           case 'nested':
             return decoder(unit.children, pathMaker(unit.name, path));
           case 'updated':
             return `Property '${pathMaker(
               unit.name,
-              path
+              path,
             )}' was updated. From ${unitToString(
-              unit.oldValue
+              unit.oldValue,
             )} to ${unitToString(unit.newValue)}`;
           default:
-            return `Unknown node format: ${node.type}`;
+            return `Unknown node format: ${unit.type}`;
         }
       })
       .filter(String);
