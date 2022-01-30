@@ -4,7 +4,7 @@ const unitToString = (value) => {
   if (typeof value === 'object' && value !== null) {
     return '[complex value]';
   }
-  if (typeof value === 'boolean' || value === null) {
+  if (typeof value === 'boolean' || value === null || value === 0) {
     return value;
   }
   return `'${value}'`;
@@ -23,7 +23,7 @@ const plainAstDecoder = (ast) => {
             return `Property '${pathMaker(
               unit.name,
               path,
-            )}' was added with value ${unitToString(unit.value)}`;
+            )}' was added with value: ${unitToString(unit.value)}`;
           case 'nested':
             return decoder(unit.children, pathMaker(unit.name, path));
           case 'updated':
