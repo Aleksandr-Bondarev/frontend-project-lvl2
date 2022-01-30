@@ -8,11 +8,13 @@ import gendiff from '../src/index.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const getFixturePath = (filename) =>
+  path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8');
 
 const expectedStylish = readFile('expectedStylish.txt');
 const expectedPlain = readFile('expectedPlain.txt');
+const expectedJson = readFile('expectedJson.txt');
 
 const jsonFile1 = getFixturePath('file1.json');
 const jsonFile2 = getFixturePath('file2.json');
@@ -23,6 +25,7 @@ const ymlFile2 = getFixturePath('file2.yml');
 const formatters = [
   ['stylish', expectedStylish],
   ['plain', expectedPlain],
+  ['json', expectedJson],
 ];
 
 test.each(formatters)('gendiff %s', (formatter, expected) => {
