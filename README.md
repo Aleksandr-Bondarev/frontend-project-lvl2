@@ -9,7 +9,7 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/8357c2deb15810589c2d/test_coverage)](https://codeclimate.com/github/Aleksandr-Bondarev/frontend-project-lvl2/test_coverage)
 
-'Gendiff' works with formats:
+'Gendiff' works with next file formats:
 
 	- .json;
 	- .yml (or .yaml);
