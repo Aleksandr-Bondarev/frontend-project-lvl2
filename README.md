@@ -18,5 +18,8 @@
 #### Demonstration of working with nested .json and .yml files:
 [![asciicast](https://asciinema.org/a/772ntVtQAtq2SIhcX3HRLLcwC.svg)](https://asciinema.org/a/772ntVtQAtq2SIhcX3HRLLcwC)
 
-#### Demonstration of plain formatter:
+#### Formatter plain:
 [![asciicast](https://asciinema.org/a/iLXVGzFwIOEepNmLPWc7ZtTz5.svg)](https://asciinema.org/a/iLXVGzFwIOEepNmLPWc7ZtTz5)
+
+#### Formatter json:
+[![asciicast](https://asciinema.org/a/t5ku99OsncTkUs0RwN0j4jVld.svg)](https://asciinema.org/a/t5ku99OsncTkUs0RwN0j4jVld)
