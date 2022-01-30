@@ -4,6 +4,7 @@ import plainAstDecoder from './plain.js';
 const formatters = {
   stylish: stylishAstDecoder,
   plain: plainAstDecoder,
+  json: (AST) => JSON.stringify(AST),
 };
 
 const formatterSelector = (ast, formatter = 'stylish') => {
